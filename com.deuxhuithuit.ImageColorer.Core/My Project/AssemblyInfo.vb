@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("com.deuxhuithuit.ImageColorer.Core")> 
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Centres Stop Inc.")> 
+<Assembly: AssemblyCompany("Deux Huit Huit Inc.")> 
 <Assembly: AssemblyProduct("com.deuxhuithuit.ImageColorer.Core")> 
-<Assembly: AssemblyCopyright("Copyright © Centres Stop Inc. 2012")> 
+<Assembly: AssemblyCopyright("Copyright © Deux Huit Huit Inc. 2012")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -20,16 +20,6 @@ Imports System.Runtime.InteropServices
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("c72b6038-e859-484b-aeee-76a10a3ee08b")> 
 
-' Version information for an assembly consists of the following four values:
-'
-'      Major Version
-'      Minor Version 
-'      Build Number
-'      Revision
-'
-' You can specify all the values or you can default the Build and Revision Numbers 
-' by using the '*' as shown below:
-' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0.*")> 
 <Assembly: AssemblyFileVersion("1.0.0.0")> 
