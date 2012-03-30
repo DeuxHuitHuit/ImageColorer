@@ -1,0 +1,94 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+NTR.API
+</name>
+</assembly>
+<members>
+<member name="M:NTR.API.Imaging.ByteImage.CopyImageJPEG(System.Drawing.Image@)">
+	<summary>
+ Copies the JPEG img into the internal buffer
+ </summary>
+	<param name="img"></param>
+	<remarks></remarks>
+</member><member name="M:NTR.API.Imaging.ByteImage.CopyImageJPEG(System.Byte[]@,System.Drawing.Image@)">
+	<summary>
+ Copies the img into the buffer with JPEG codec and 90% quality LZW
+ </summary>
+	<param name="buffer"></param>
+	<param name="img"></param>
+	<remarks></remarks>
+</member><member name="M:NTR.API.Imaging.ByteImage.CopyImage(System.Byte[]@,System.Drawing.Image@,System.Drawing.Imaging.ImageCodecInfo,System.Drawing.Imaging.EncoderParameters)">
+	<summary>
+ Copies the img into the buffer with the specified encoder and its params
+ </summary>
+	<param name="buffer"></param>
+	<param name="img"></param>
+	<param name="enc"></param>
+	<param name="encoderParams"></param>
+	<remarks></remarks>
+</member><member name="M:NTR.API.Imaging.ByteImage.CopyImage(System.Drawing.Image@)">
+	<summary>
+ Copies the img into the internal buffer, usign the image raw format
+ </summary>
+	<param name="img"></param>
+	<remarks></remarks>
+</member><member name="M:NTR.API.Imaging.ByteImage.CopyImage(System.Byte[]@,System.Drawing.Image@,System.Drawing.Imaging.ImageFormat)">
+	<summary>
+ Copies the img into the buffer with the specified image format
+ </summary>
+	<param name="buffer"></param>
+	<param name="img"></param>
+	<param name="format"></param>
+	<remarks></remarks>
+</member><member name="M:NTR.API.Imaging.ByteImage.CopyImage(System.Byte[]@,System.Drawing.Image@)">
+	<summary>
+ Copies the img into the buffer usign the image raw format
+ </summary>
+	<param name="buffer"></param>
+	<param name="img"></param>
+	<remarks></remarks>
+</member><member name="M:NTR.API.Imaging.ByteImage.CreateImage">
+	<summary>
+ Create a Image object from the internal buffer
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:NTR.API.Search.QueryParser.ForContainsTable(System.String,NTR.API.Search.QueryParser.SearchModes,NTR.API.Search.QueryParser.SearchForms)">
+	<summary>
+ Gets the query as entered by the client and formats it for the CONTAINSTABLE T-SQL instruction.
+ Accepts "..." as phrases, words a seperated by a space
+ </summary>
+	<param name="query">client's query input</param>
+	<returns>The properly formatted query</returns>
+	<remarks>You may loose data from the given query if it contains bad characters</remarks>
+</member><member name="M:NTR.API.Search.QueryParser.CreateOutput(System.Collections.Generic.List{System.String}@,NTR.API.Search.QueryParser.SearchModes@,NTR.API.Search.QueryParser.SearchForms@)">
+	<summary>
+ Create the final query string
+ </summary>
+	<param name="list">the list of word and phrases. All occurence must be non-null</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:NTR.API.Search.QueryParser">
+	<summary>
+ Enables a rapid parsing of a search query entered by a client/user into a
+ query that a SQL search engine will understand fully.
+ </summary>
+	<remarks></remarks>
+</member><member name="P:NTR.API.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:NTR.API.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:NTR.API.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

@@ -69,7 +69,7 @@ Module Main
                     ElseIf s.StartsWith("-o:") Then
                         outputFolder = s.Remove(0, 3)
                     ElseIf s.StartsWith("-c:") Then
-                        victim = parseVictimColor(s.Remove(0, 3))
+                        victim = Core.GifImage.ParseColor(s.Remove(0, 3))
                     Else
                         WriteLine("Argument '{0}' not valid.", s)
                     End If
@@ -77,14 +77,12 @@ Module Main
         Next
     End Sub
 
-
-
     Private Sub ProcessFile(ByVal fileInfo As IO.FileInfo)
         Dim img As Drawing.Image = Drawing.Bitmap.FromFile(fileInfo.FullName)
 
-        For r As Integer = 0 To 255 Step stepper
-            For g As Integer = 0 To 255 Step stepper
-                For b As Integer = 0 To 255 Step stepper
+        For r As Integer = 0 To 128 Step stepper
+            For g As Integer = 0 To 32 Step stepper
+                For b As Integer = 0 To 32 Step stepper
                     CreateNewImage(img, r, g, b)
                 Next b
             Next g
@@ -96,13 +94,15 @@ Module Main
 
 
     Private Sub CreateNewImage(ByRef refImage As Drawing.Image, ByVal r As Integer, ByVal g As Integer, ByVal b As Integer)
-        Dim newImage As Bitmap = CType(refImage.Clone, Bitmap)
+        Dim newImage As Image = CType(refImage.Clone, Image)
 
+        ' Convert to gif with new color
+        Core.GifImage.ConverToGifImageWithNewColor(newImage, refImage.Palette, victim, Color.FromArgb(255, r, g, b))
 
-        createGifImage(newImage, refImage.Palette, r, g, b)
+        ' Sage this gif image
+        SaveGifImage(newImage, r, g, b)
 
-        SaveNewImage(newImage, r, g, b)
-
+        ' Free up resources
         newImage.Dispose()
         newImage = Nothing
     End Sub
@@ -114,7 +114,7 @@ Module Main
         Return n \ stepper
     End Function
 
-    Private Sub SaveNewImage(ByRef newImage As Drawing.Bitmap, ByVal r As Integer, ByVal g As Integer, ByVal b As Integer)
+    Private Sub SaveGifImage(ByRef newImage As Drawing.Image, ByVal r As Integer, ByVal g As Integer, ByVal b As Integer)
         If Not FileIO.FileSystem.GetDirectoryInfo(outputFolder).Exists Then
             FileIO.FileSystem.CreateDirectory(outputFolder)
         End If
@@ -124,7 +124,7 @@ Module Main
             fileInfo.Delete()
         End If
 
-        newImage.Save(fileInfo.FullName, Drawing.Imaging.ImageFormat.Gif) ' newImage.RawFormat)
+        newImage.Save(fileInfo.FullName, Drawing.Imaging.ImageFormat.Gif)
 
         WriteLine(" - File {0} as been created!", fileInfo.Name)
     End Sub
