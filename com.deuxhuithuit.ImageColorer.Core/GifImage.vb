@@ -84,22 +84,29 @@ Public Class GifImage
     End Sub
 
     Public Shared Function ParseColor(ByVal s As String) As Color
-        Dim r As Integer = 255
-        Dim g As Integer = 255
-        Dim b As Integer = 255
-        Dim splitted() As String = s.Split(","c)
-        If splitted.Length <> 3 Then
-            If s.Length = 6 Then
-                Integer.TryParse(s.Substring(0, 2), Globalization.NumberStyles.HexNumber, Globalization.CultureInfo.InvariantCulture, r)
-                Integer.TryParse(s.Substring(2, 2), Globalization.NumberStyles.HexNumber, Globalization.CultureInfo.InvariantCulture, g)
-                Integer.TryParse(s.Substring(4, 2), Globalization.NumberStyles.HexNumber, Globalization.CultureInfo.InvariantCulture, b)
+        If Not String.IsNullOrWhiteSpace(s) Then
+            Dim r As Integer = 0
+            Dim g As Integer = 0
+            Dim b As Integer = 0
+            Dim splitted() As String = s.Split(","c)
+            If splitted.Length <> 3 Then
+                If s.Length = 6 Then
+                    Integer.TryParse(s.Substring(0, 2), Globalization.NumberStyles.HexNumber, Globalization.CultureInfo.InvariantCulture, r)
+                    Integer.TryParse(s.Substring(2, 2), Globalization.NumberStyles.HexNumber, Globalization.CultureInfo.InvariantCulture, g)
+                    Integer.TryParse(s.Substring(4, 2), Globalization.NumberStyles.HexNumber, Globalization.CultureInfo.InvariantCulture, b)
+                ElseIf s.Length = 3 Then
+                    Integer.TryParse(s.Substring(0, 1), Globalization.NumberStyles.HexNumber, Globalization.CultureInfo.InvariantCulture, r)
+                    Integer.TryParse(s.Substring(1, 1), Globalization.NumberStyles.HexNumber, Globalization.CultureInfo.InvariantCulture, g)
+                    Integer.TryParse(s.Substring(2, 1), Globalization.NumberStyles.HexNumber, Globalization.CultureInfo.InvariantCulture, b)
+                End If
+            Else
+                Integer.TryParse(splitted(0), r)
+                Integer.TryParse(splitted(1), g)
+                Integer.TryParse(splitted(2), b)
             End If
-        Else
-            Integer.TryParse(splitted(0), r)
-            Integer.TryParse(splitted(1), g)
-            Integer.TryParse(splitted(2), b)
+            Return Color.FromArgb(255, r, g, b)
         End If
-        Return Color.FromArgb(255, r, g, b)
+        Return Nothing
     End Function
 
 End Class
